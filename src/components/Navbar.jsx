@@ -11,7 +11,7 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCart";
 
 const Container = styled.div`
   height: 60px;
-  background-color: #80514F;
+  background-color: #B51204;
 `;
 
 const Wrapper = styled.div`
