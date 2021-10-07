@@ -8,22 +8,27 @@ import {
 } from "@mui/icons-material";
 import Badge from "@mui/material/Badge";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCart";
+import { mobile } from "../responsive";
+import { color } from "@mui/system";
 
 const Container = styled.div`
   height: 60px;
-  background-color: #B51204;
+  background-color: #b51204;
+  ${mobile({ heigh: "50px" })}
 `;
 
 const Wrapper = styled.div`
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
+  ${mobile({ padding: "10px 0px" })}
 `;
 
 const Genders = styled.span`
   font-size: 1rem;
   cursor: pointer;
   margin-right: 25px;
+  ${mobile({ fontSize: "12px" })}
 `;
 
 const Left = styled.div`
@@ -40,6 +45,10 @@ const Center = styled.div`
 
 const Logo = styled.h1`
   font-weight: bolder;
+  font-family: "Yaldevi", sans-serif;
+  font-size: 32px;
+  ${mobile({ fontSize: "16px "})}
+
 `;
 const Right = styled.div`
   color: white;
@@ -47,6 +56,7 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  ${mobile({ flex: 2, justifyContent: "center"})}
 `;
 
 const SearchContainer = styled.div`
@@ -61,8 +71,13 @@ const MenuItems = styled.span`
   font-size: 1rem;
   cursor: pointer;
   margin-right: 25px;
+  ${mobile({ fontSize: "12px ", marginLeft: "10px" })}
 `;
-const Input = styled.input``;
+const Input = styled.input`
+padding: 5px;
+  border: none;
+  ${mobile({ width: "50px" })}
+`;
 
 const Navbar = () => {
   return (
@@ -74,12 +89,12 @@ const Navbar = () => {
           <Genders>Youth</Genders>
         </Left>
         <Center>
-          <Logo>Golden Shoes</Logo>
+          <Logo>GOLDEN SHOE</Logo>
         </Center>
         <Right>
           <SearchContainer>
-            <Input />
-            <Search  />
+            <Input placeholder="search" />
+            <Search />
           </SearchContainer>
           <MenuItems>
             <Badge>
