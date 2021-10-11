@@ -51,7 +51,7 @@ const Login = () => {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url(https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/93191a4d-c9c5-4b23-ab61-48b7c67480ab/paris-saint-germain-fleece-hoodie-J88TxL.png)',
+            backgroundImage: 'url(https://images.pexels.com/photos/2043590/pexels-photo-2043590.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],

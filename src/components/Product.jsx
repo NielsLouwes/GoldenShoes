@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import {
-  FavoriteBorderOutlined,
-  ShoppingCartOutlined,
-} from "@mui/icons-material";
+import { FavoriteBorderOutlined } from "@mui/icons-material";
+import SearchIcon from "@mui/icons-material/Search";
+import { Link } from "react-router-dom";
+
 
 const Info = styled.div`
   opacity: 0;
@@ -28,9 +28,9 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #80514f;
+  background-color: #b51204;
   position: relative;
-  &:hover ${Info}{
+  &:hover ${Info} {
     opacity: 1;
   }
 `;
@@ -45,6 +45,12 @@ const Circle = styled.div`
 const Image = styled.img`
   height: 75%;
   z-index: 2;
+`;
+
+const BuyText = styled.p`
+  margin-right: 10px;
+  color: white;
+  font-weight: bolder;
 `;
 
 const Icon = styled.div`
@@ -63,14 +69,26 @@ const Icon = styled.div`
   }
 `;
 
+const LinkStyle = {
+  textDecoration: "none",
+  color: "black",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+};
+
 const Product = ({ item }) => {
+
+
   return (
     <Container>
       <Circle />
       <Image src={item.img} />
       <Info>
         <Icon>
-          <ShoppingCartOutlined />
+          <Link to="/product-page/:id" style={LinkStyle}>
+            <SearchIcon />{" "}
+          </Link>
         </Icon>
         <Icon>
           <FavoriteBorderOutlined />
@@ -81,3 +99,10 @@ const Product = ({ item }) => {
 };
 
 export default Product;
+
+//implement in INFO section below Image if backend working.
+{
+  /* <Link to={`/product/${item._id}`}>
+<SearchIcon />{" "}
+</Link> */
+}

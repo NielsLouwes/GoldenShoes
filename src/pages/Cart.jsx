@@ -5,7 +5,11 @@ import styled from "styled-components";
 import Benefits from "../components/Benefits";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import Newsletter from '../components/Newsletter';
 import { mobile } from "../responsive";
+import WomensBoot from "../images/WomensBoot.png"
+import NikeShoesTwo from "../images/NikeShoesTwo.png";
+
 
 const Container = styled.div``;
 
@@ -41,10 +45,11 @@ const Product = styled.div`
 const ProductDetail = styled.div`
   flex: 2;
   display: flex;
+  height: 250px;
 `;
 
 const Image = styled.img`
-  width: 200px;
+  width: 250px;
 `;
 
 const Details = styled.div`
@@ -132,9 +137,29 @@ const Button = styled.button`
   color: white;
   font-weight: 600;
   font-size: 1.2rem;
+  cursor: pointer;
+`;
+
+const ApplyCodeButton = styled.button`
+  width: 100%;
+  padding: 10px;
+  color: black;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-top: 10px;
+  border: 2px solid black;
+  cursor: pointer;
+  &:hover {
+    background-color: #f8f4f4;
+`
+  
+const Input = styled.input`
+  padding: 10px;
+  border: 1px black solid;
 `;
 
 const Cart = () => {
+ 
   return (
     <Container>
       <Navbar />
@@ -145,20 +170,20 @@ const Cart = () => {
           <Info>
             <Product>
               <ProductDetail>
-                <Image src="https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/25184659-eeb7-4837-9a72-08f4193964c1/air-max-sweatshirt-F04J81.png" />
+                <Image src={WomensBoot} />
                 <Details>
                   <ProductName>
-                        Nike Air Max
+                        Brown ankle boots
                   </ProductName>
                   <ProductDescription>
-                        Blue Men's Sweatshirt 
+                       Women's boots
                   </ProductDescription>
                   <ProductId>
                     <b>ID:</b> 93813718293
                   </ProductId>
                   <ProductColor color="blue" />
                   <ProductSize>
-                    <b>Size:</b> M
+                    <b>Size:</b> 39
                   </ProductSize>
                 </Details>
               </ProductDetail>
@@ -168,19 +193,19 @@ const Cart = () => {
                   <ProductAmount>2</ProductAmount>
                   <Remove />
                 </ProductAmountContainer>
-                <ProductPrice>$ 30</ProductPrice>
+                <ProductPrice>£ 80</ProductPrice>
               </PriceDetail>
             </Product>
             <Hr />
             <Product>
               <ProductDetail>
-                <Image src="https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/ccf19ef4-6a82-4a97-920c-6b664ef17b0c/jordan-essentials-fleece-crew-J3JLj7.png" />
+                <Image src={NikeShoesTwo} />
                 <Details>
                   <ProductName>
-                     Jordan Essentials
+                     Jordan One
                   </ProductName>
                   <ProductDescription>
-                       Grey Men's Fleece Crew
+                      Men's sneakers
                   </ProductDescription>
                   <ProductId>
                     <b>ID:</b> 93813718293
@@ -197,7 +222,7 @@ const Cart = () => {
                   <ProductAmount>1</ProductAmount>
                   <Remove />
                 </ProductAmountContainer>
-                <ProductPrice>$ 20</ProductPrice>
+                <ProductPrice>£ 120</ProductPrice>
               </PriceDetail>
             </Product>
           </Info>
@@ -205,22 +230,31 @@ const Cart = () => {
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>$ 80</SummaryItemPrice>
+              <SummaryItemPrice>£ 200</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Estimated Shipping</SummaryItemText>
-              <SummaryItemPrice>$ 0.00</SummaryItemPrice>
+              <SummaryItemPrice>£ 0.00</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
             </SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>$ 80</SummaryItemPrice>
+              <SummaryItemPrice>£ 200</SummaryItemPrice>
             </SummaryItem>
             <Button>Checkout</Button>
+            <SummaryItem>
+              <SummaryItemText>Estimated delivery date is the <b>20th </b> of October, 2021. </SummaryItemText>
+            </SummaryItem>
+            <SummaryItem>
+              <SummaryItemText>Insert discount code (not required) </SummaryItemText>
+            </SummaryItem>
+            <Input placeholder="Enter discount code" />
+            <ApplyCodeButton>Apply</ApplyCodeButton>
           </Summary>
         </Bottom>
       </Wrapper>
+      <Newsletter />
       <Footer />
     </Container>
   );

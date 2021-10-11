@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mobile } from "../responsive";
 
 const Display = styled.div`
   display: flex;
@@ -8,18 +9,11 @@ const Container = styled.div`
   height: 30px;
   flex: 1;
   padding: 10px;
-  font-size: 0.9rem;
+  font-size: 16px;
   font-weight: bolder;
-`;
-
-const RightContainer = styled.div`
-  height: 30px;
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-  font-size: 0.9rem;
-  font-weight: bolder;
+  text-align: center;
+  color: darkslategrey;
+  ${mobile({ fontSize: "10px ", padding: 2, marginBottom: "10px"})}
 `;
 
 const Benefits = () => {
@@ -27,10 +21,9 @@ const Benefits = () => {
     <>
       <Display>
         <Container style={{ marginLeft: 15 }}>
-          Free delivery over 30 euros
+          Free delivery for orders over 30 euros
         </Container>
-        <Container>Next day delivery if you order before 12!</Container>
-        <RightContainer>Free returns within 100 days</RightContainer>
+       <Container>Free returns within 100 days</Container> 
       </Display>
     </>
   );

@@ -6,10 +6,12 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import Twitter from "@mui/icons-material/Twitter";
 import PinterestIcon from "@mui/icons-material/Pinterest";
 import Pinterest from "@mui/icons-material/Pinterest";
+import { mobile } from "../responsive";
 
 const Container = styled.div`
   display: flex;
   margin-left: 25px;
+  ${mobile({ flexDirection: "column" })}
 `;
 
 const Left = styled.div`
@@ -17,28 +19,35 @@ const Left = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20;
+  ${mobile({ padding: "0" })}
 `;
 
 const Description = styled.p`
   margin: 20px 0px;
+  ${mobile({ margin: "none" })}
 `;
-const SocialContainer = styled.h1`
+const SocialContainer = styled.div`
   display: flex;
 `;
-const SocialIcon = styled.h1`
+const SocialIcon = styled.div`
   margin: 7px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  ${mobile({ margin: "0px" })}
 `;
 
 const Center = styled.div`
   flex: 1;
   padding-bottom: 20px;
+  margin-left: 50px;
+  padding-left: 25px;
+  ${mobile({ marginTop: "20px", marginLeft: "0px", paddingLeft: "0px" })}
 `;
 
-const Logo = styled.h2`
+const Logo = styled.h3`
   margin-bottom: 25px;
+  ${mobile({ marginBottom: "0" })}
 `;
 
 const List = styled.ul`
@@ -52,6 +61,8 @@ const ListItem = styled.li``;
 const Right = styled.div`
   flex: 1;
   padding-bottom: 20px;
+  margin-left: 60px;
+  ${mobile({ padding: "none", marginLeft: "0px"})}
 `;
 
 const Footer = () => {
@@ -59,9 +70,7 @@ const Footer = () => {
     <Container>
       <Left>
         <Logo>SOCIALS</Logo>
-        <Description>
-          Connect with us!
-        </Description>
+        <Description>Connect with us!</Description>
         <SocialContainer>
           <SocialIcon>
             <FacebookOutlined />

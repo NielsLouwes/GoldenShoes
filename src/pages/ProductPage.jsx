@@ -5,13 +5,17 @@ import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Add, Remove } from "@mui/icons-material";
+import { mobile } from "../responsive";
+import { useLocation } from "react-router";
+import { publicRequest } from "../axiosRequests";
 
 const Container = styled.div``;
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
+  ${mobile({ padding: "10px", flexDirection: "column" })}
 `;
 const ImageContainer = styled.div`
   flex: 1;
@@ -20,10 +24,12 @@ const Image = styled.img`
   width: 100%;
   height: 60vh;
   object-fit: cover;
+  ${mobile({ height: "40vh" })}
 `;
 const InfoContainer = styled.div`
   flex: 1;
   padding: 0 50px;
+  ${mobile({ padding: "10px" })}
 `;
 const Title = styled.h1``;
 const Description = styled.p`
@@ -45,11 +51,17 @@ const SizeText = styled.p`
   margin-bottom: 5px;
 `;
 
+const ReviewText = styled.p`
+  color: grey;
+  font-size: 14px;
+`;
+
 const FilterContainer = styled.div`
   width: 50%;
   margin: 30px 0px;
   display: flex;
   justify-content: space-between;
+  ${mobile({ width: "100%" })}
 `;
 
 const Filter = styled.div`
@@ -82,6 +94,7 @@ const AddContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  ${mobile({ width: "100%" })}
 `;
 const AmountContainer = styled.div`
   display: flex;
@@ -92,14 +105,13 @@ const Amount = styled.span`
   width: 30px;
   height: 30px;
   border-radius: 10px;
-  border: 1px solid #80514f;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0px 5px;
 `;
 const CartButton = styled.option`
-  padding: 15px;
+  padding: 10px;
   border: 2px solid grey;
   background-color: white;
   border-radius: 10px;
@@ -110,10 +122,37 @@ const CartButton = styled.option`
   &:hover {
     background-color: #f8f4f4;
   }
+  ${mobile({ padding: "8px" })}
 `;
 
 const ProductPage = () => {
   const [value, setValue] = useState(4.5);
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+  const [product, setProduct] = useState({});
+  const [quantity, setQuantity] = useState(1);
+ 
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const response = await publicRequest.get("/products/find/" + id);
+        setProduct(response.data);
+      } catch {}
+    };
+    getProduct()
+  }, [id]);
+
+  const handleQuantity = (type) => {
+    if(type === "decrease") {
+      quantity > 1 && setQuantity(quantity - 1)
+    } else {
+      quantity < 10 && setQuantity(quantity + 1)
+    }
+  }
+
+  const handleClick = () => {
+
+  }
 
   return (
     <Container>
@@ -121,26 +160,30 @@ const ProductPage = () => {
       <Benefits />
       <Wrapper>
         <ImageContainer>
-          <Image src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,b_rgb:f5f5f5/05a8af68-a2c4-465d-81e2-2fa136314c4d/sb-winterized-skate-top-mhw2Pg.png" />
+          <Image src="https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/7ed0855435194229a525aad6009a0497_9366/Superstar_Shoes_White_EG4958_01_standard.jpg" />
         </ImageContainer>
 
         <InfoContainer>
-          <Title>Nike SB Therma-fit</Title>
-          <Category>Skateboarding</Category>
+          <Title>Adidas Superstar Shoes</Title>
+          <Category>Men's shoes</Category>
           <Description>
-            Made from extra thick, extra warm polar fleece, the Nike SB
-            Therma-FIT Top is a cold-weather essential.Water-repellent fabric on
-            the chest and upper back helps keep you dry in light rain.This
-            product is made from at least 50% recycled polyester fibres.
+            Originally made for basketball courts in the '70s. Celebrated by hip
+            hop royalty in the '80s. The adidas Superstar shoe is now a
+            lifestyle staple for streetwear enthusiasts. The world-famous shell
+            toe feature remains, providing style and protection. Just like it
+            did on the B-ball courts back in the day.
           </Description>
           <Box>
             <RatingStars>
               <SizeText>Reviews</SizeText>
               <Rating name="read-only" value={value} readOnly />
             </RatingStars>
+            <ReviewText>
+              Leave a review and receive £10 off your next purchase.
+            </ReviewText>
           </Box>
           <Colors></Colors>
-          <Price> $80.00</Price>
+          <Price> £80.00</Price>
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
@@ -160,17 +203,15 @@ const ProductPage = () => {
               </FilterSize>
             </Filter>
           </FilterContainer>
-          <SizeText>
-            Our model is wearing a size M. It fits true to size.
-          </SizeText>
+          <SizeText>This shoe fits true to size.</SizeText>
 
           <AddContainer>
             <AmountContainer>
-              <Remove />
-              <Amount> 1 </Amount>
-              <Add />
+              <Remove onClick={() => handleQuantity("decrease")} />
+              <Amount> {quantity} </Amount>
+              <Add onClick={() => handleQuantity("increase")} />
             </AmountContainer>
-            <CartButton> Add to cart</CartButton>
+            <CartButton onClick={handleClick}> Add to cart</CartButton>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
