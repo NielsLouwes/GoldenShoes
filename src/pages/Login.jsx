@@ -11,6 +11,8 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
+import Register from './Register';
+import { useState } from 'react';
 
 const Container = styled.div``
 
@@ -29,6 +31,8 @@ function Copyright(props) {
   
 
 const Login = () => {
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -40,8 +44,6 @@ const Login = () => {
         });
       };
     
-
-
     return (
         <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
@@ -80,10 +82,10 @@ const Login = () => {
                 margin="normal"
                 required
                 fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
+                id="username"
+                label="Username"
+                name="username"
+                autoComplete="username"
                 autoFocus
               />
               <TextField
@@ -115,7 +117,7 @@ const Login = () => {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2">
+                  <Link to="/register" href="#" variant="body2">
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>

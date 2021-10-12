@@ -1,14 +1,17 @@
-import { Add, Remove } from '@mui/icons-material';
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
+import { Add, Remove } from "@mui/icons-material";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 import styled from "styled-components";
 import Benefits from "../components/Benefits";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import Newsletter from '../components/Newsletter';
+import Newsletter from "../components/Newsletter";
 import { mobile } from "../responsive";
-import WomensBoot from "../images/WomensBoot.png"
+import WomensBoot from "../images/WomensBoot.png";
 import NikeShoesTwo from "../images/NikeShoesTwo.png";
+import { useSelector } from "react-redux";
+import { popularProducts } from "../data";
+import { useState } from "react";
 
 
 const Container = styled.div``;
@@ -17,7 +20,6 @@ const Wrapper = styled.div`
   padding: 20px;
   margin-top: 25px;
   ${mobile({ padding: "10px" })}
-  
 `;
 
 const Title = styled.h1`
@@ -49,7 +51,8 @@ const ProductDetail = styled.div`
 `;
 
 const Image = styled.img`
-  width: 250px;
+  width: 300px;
+  ${mobile({ width: "150px" })}
 `;
 
 const Details = styled.div`
@@ -61,15 +64,21 @@ const Details = styled.div`
 
 const ProductName = styled.h3``;
 
-const ProductDescription = styled.p``;
+const ProductDescription = styled.p`
+  ${mobile({ marginBottom: "5px" })}
+`;
 
-const ProductId = styled.span``;
+const ProductId = styled.span`
+  ${mobile({ marginBottom: "5px" })}    
+`;
 
 const ProductColor = styled.div`
   width: 20px;
   height: 20px;
   border-radius: 50%;
+  border: 1px solid grey;
   background-color: ${(props) => props.color};
+  ${mobile({ marginBottom: "5px" })}  
 `;
 
 const ProductSize = styled.span``;
@@ -151,15 +160,25 @@ const ApplyCodeButton = styled.button`
   cursor: pointer;
   &:hover {
     background-color: #f8f4f4;
-`
-  
+`;
+
 const Input = styled.input`
   padding: 10px;
   border: 1px black solid;
 `;
 
 const Cart = () => {
- 
+  const cart = useSelector((state) => state.cart);
+  const [quantity, setQuantity] = useState(1);
+
+  const handleQuantity = (type) => {
+    if (type === "decrease") {
+      quantity > 1 && setQuantity(quantity - 1);
+    } else {
+      quantity < 10 && setQuantity(quantity + 1);
+    }
+  };
+
   return (
     <Container>
       <Navbar />
@@ -170,59 +189,55 @@ const Cart = () => {
           <Info>
             <Product>
               <ProductDetail>
-                <Image src={WomensBoot} />
+                <Image src={popularProducts[0].img} />
                 <Details>
-                  <ProductName>
-                        Brown ankle boots
-                  </ProductName>
+                  <ProductName>{popularProducts[0].name}</ProductName>
                   <ProductDescription>
-                       Women's boots
+                    {popularProducts[0].category}
                   </ProductDescription>
                   <ProductId>
                     <b>ID:</b> 93813718293
                   </ProductId>
-                  <ProductColor color="blue" />
+                  <ProductColor color="white" />
                   <ProductSize>
-                    <b>Size:</b> 39
+                    <b>Size:</b> {popularProducts[0].size[6]}
                   </ProductSize>
                 </Details>
               </ProductDetail>
               <PriceDetail>
                 <ProductAmountContainer>
-                  <Add />
-                  <ProductAmount>2</ProductAmount>
-                  <Remove />
+                  <Remove onClick={() => handleQuantity("decrease")} />
+                  <ProductAmount>{quantity}</ProductAmount>
+                  <Add onClick={() => handleQuantity("increase")} />
                 </ProductAmountContainer>
-                <ProductPrice>£ 80</ProductPrice>
+                <ProductPrice>£ {popularProducts[0].price}</ProductPrice>
               </PriceDetail>
             </Product>
             <Hr />
             <Product>
               <ProductDetail>
-                <Image src={NikeShoesTwo} />
+                <Image src={popularProducts[7].img} />
                 <Details>
-                  <ProductName>
-                     Jordan One
-                  </ProductName>
+                  <ProductName>{popularProducts[7].name}</ProductName>
                   <ProductDescription>
-                      Men's sneakers
+                    {popularProducts[7].category}
                   </ProductDescription>
                   <ProductId>
                     <b>ID:</b> 93813718293
                   </ProductId>
-                  <ProductColor color="gray" />
+                  <ProductColor color="#BC9E82" />
                   <ProductSize>
-                    <b>Size:</b> M
+                    <b>Size:</b> {popularProducts[7].size[1]}
                   </ProductSize>
                 </Details>
               </ProductDetail>
               <PriceDetail>
                 <ProductAmountContainer>
-                  <Add />
-                  <ProductAmount>1</ProductAmount>
-                  <Remove />
+                  <Remove onClick={() => handleQuantity("decrease")} />
+                  <ProductAmount>{quantity}</ProductAmount>
+                  <Add  onClick={() => handleQuantity("increase")}/>
                 </ProductAmountContainer>
-                <ProductPrice>£ 120</ProductPrice>
+                <ProductPrice>£ {popularProducts[7].price}</ProductPrice>
               </PriceDetail>
             </Product>
           </Info>
@@ -236,18 +251,21 @@ const Cart = () => {
               <SummaryItemText>Estimated Shipping</SummaryItemText>
               <SummaryItemPrice>£ 0.00</SummaryItemPrice>
             </SummaryItem>
-            <SummaryItem>
-            </SummaryItem>
+            <SummaryItem></SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>£ 200</SummaryItemPrice>
             </SummaryItem>
             <Button>Checkout</Button>
             <SummaryItem>
-              <SummaryItemText>Estimated delivery date is the <b>20th </b> of October, 2021. </SummaryItemText>
+              <SummaryItemText>
+                Estimated delivery date is the <b>20th </b> of October, 2021.{" "}
+              </SummaryItemText>
             </SummaryItem>
             <SummaryItem>
-              <SummaryItemText>Insert discount code (not required) </SummaryItemText>
+              <SummaryItemText>
+                Insert discount code (not required){" "}
+              </SummaryItemText>
             </SummaryItem>
             <Input placeholder="Enter discount code" />
             <ApplyCodeButton>Apply</ApplyCodeButton>

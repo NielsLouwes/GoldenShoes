@@ -10,6 +10,9 @@ import { Add, Remove } from "@mui/icons-material";
 import { mobile } from "../responsive";
 import { useLocation } from "react-router";
 import { publicRequest } from "../axiosRequests";
+import { addProduct } from "../redux/cartRedux";
+import { useDispatch } from "react-redux";
+import { popularProducts } from "../data";
 
 const Container = styled.div``;
 const Wrapper = styled.div`
@@ -131,7 +134,8 @@ const ProductPage = () => {
   const id = location.pathname.split("/")[2];
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
- 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const getProduct = async () => {
       try {
@@ -139,20 +143,20 @@ const ProductPage = () => {
         setProduct(response.data);
       } catch {}
     };
-    getProduct()
+    getProduct();
   }, [id]);
 
   const handleQuantity = (type) => {
-    if(type === "decrease") {
-      quantity > 1 && setQuantity(quantity - 1)
+    if (type === "decrease") {
+      quantity > 1 && setQuantity(quantity - 1);
     } else {
-      quantity < 10 && setQuantity(quantity + 1)
+      quantity < 10 && setQuantity(quantity + 1);
     }
-  }
+  };
 
   const handleClick = () => {
-
-  }
+    dispatch(addProduct({ ...product, quantity }));
+  };
 
   return (
     <Container>
@@ -164,8 +168,8 @@ const ProductPage = () => {
         </ImageContainer>
 
         <InfoContainer>
-          <Title>Adidas Superstar Shoes</Title>
-          <Category>Men's shoes</Category>
+          <Title>{popularProducts[0].name}</Title>
+          <Category>{popularProducts[0].category}</Category>
           <Description>
             Originally made for basketball courts in the '70s. Celebrated by hip
             hop royalty in the '80s. The adidas Superstar shoe is now a
@@ -183,7 +187,7 @@ const ProductPage = () => {
             </ReviewText>
           </Box>
           <Colors></Colors>
-          <Price> £80.00</Price>
+          <Price> £{popularProducts[0].price}</Price>
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>

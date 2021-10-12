@@ -6,11 +6,15 @@ import ProductPage from "./pages/ProductPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Cart from "./pages/Cart";
-import Checkout from "./pages/Checkout";
-import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 
 export default function App() {
-  const user = true
+  // const user = true
 
   return (
     <Router>
@@ -29,10 +33,12 @@ export default function App() {
             <ProductPage />
           </Route>
           <Route exact path="/login">
-            {user ? <Redirect to="/" /> :  <Login /> }
+            <Login />
+            {/* {user ? <Redirect to="/" /> :  <Login /> } */}
           </Route>
           <Route exact path="/register">
-            {user ? <Redirect to="/" /> :   <Register /> }
+            <Register />
+            {/* {user ? <Redirect to="/" /> :   <Register /> } */}
           </Route>
           <Route exact path="/cart">
             <Cart />

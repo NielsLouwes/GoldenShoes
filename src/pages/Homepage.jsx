@@ -11,7 +11,7 @@ import styled from "styled-components";
 
 const Title = styled.h1`
   text-align: center;
-  font-size: 42px;
+  font-size: 36px;
 `;
 
 const Homepage = () => {

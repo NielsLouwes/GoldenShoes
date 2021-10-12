@@ -35,7 +35,12 @@ export const categories = [
   export const popularProducts = [
     {
       id:1,
+      name: "Adidas Superstars",
+      category: "Men's sneakers",
       img: AdidasShoes,
+      description: "Originally made for basketball courts in the '70s. Celebrated by hip hop royalty in the '80s. The adidas Superstar shoe is now a lifestyle staple for streetwear enthusiasts. The world-famous shell toe feature remains, providing style and protection. Just like it did on the B-ball courts back in the day.",
+      size: [38,39,40,41,42,43,44,45,46],
+      price: 80,
     },
     {
       id:2,
@@ -63,6 +68,11 @@ export const categories = [
     },
     {
       id:8,
+      name: "Women's ankle boot",
+      category: "Women's boots",
       img: WomensBoot,
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+      size: [38,39,40,41,42,43,44,45,46],
+      price: 100,
     },
   ]
