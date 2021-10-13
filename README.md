@@ -2,11 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
+This project's authentication runs via the backend and redux. Clone and start that repo first.
 
 Make sure you are in the root directory where package.json is located.
 
