@@ -9,7 +9,9 @@ In the project directory, you can run:
 ### `npm start`
 
 Make sure you head into goldenshoes folder within goldenshoes-case
+
 npm install
+
 npm start
 
 It should run on your localhost.
