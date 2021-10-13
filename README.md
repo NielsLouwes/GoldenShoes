@@ -8,7 +8,7 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Make sure you head into goldenshoes folder within goldenshoes-case
+Make sure you are in the root directory where package.json is located.
 
 npm install
 
