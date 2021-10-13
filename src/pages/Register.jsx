@@ -95,6 +95,16 @@ export default function Register() {
               <TextField
                 required
                 fullWidth
+                id="username"
+                label="Username"
+                name="username"
+                autoComplete="username"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                required
+                fullWidth
                 name="password"
                 label="Password"
                 type="password"
@@ -119,8 +129,8 @@ export default function Register() {
           </Button>
           <Grid container justifyContent="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
-                Already have an account? <Link to="/register">Sign in</Link>
+              <Link to="/login" href="#" variant="body2">
+                Already have an account?"Sign in
               </Link>
             </Grid>
           </Grid>

@@ -12,6 +12,7 @@ import NikeShoesTwo from "../images/NikeShoesTwo.png";
 import { useSelector } from "react-redux";
 import { popularProducts } from "../data";
 import { useState } from "react";
+import { tablet } from "../responsive"
 
 
 const Container = styled.div``;
@@ -52,7 +53,8 @@ const ProductDetail = styled.div`
 
 const Image = styled.img`
   width: 300px;
-  ${mobile({ width: "150px" })}
+  ${mobile({ width: "150px" })};
+  ${tablet({ width: "200px" })}
 `;
 
 const Details = styled.div`
@@ -121,10 +123,13 @@ const Summary = styled.div`
   border-radius: 10px;
   padding: 20px;
   height: 50vh;
+  ${tablet({ heigh: '65vh' })}
 `;
+
 
 const SummaryTitle = styled.h1`
   font-weight: 200;
+  ${tablet({ fontSize: "18px", fontWeight: "bolder" })}
 `;
 
 const SummaryItem = styled.div`
@@ -133,6 +138,7 @@ const SummaryItem = styled.div`
   justify-content: space-between;
   font-weight: ${(props) => props.type === "total" && "500"};
   font-size: ${(props) => props.type === "total" && "24px"};
+  ${tablet({ margin: "12px" })}
 `;
 
 const SummaryItemText = styled.span``;
@@ -206,9 +212,9 @@ const Cart = () => {
               </ProductDetail>
               <PriceDetail>
                 <ProductAmountContainer>
-                  <Remove onClick={() => handleQuantity("decrease")} />
+                  <Remove  />
                   <ProductAmount>{quantity}</ProductAmount>
-                  <Add onClick={() => handleQuantity("increase")} />
+                  <Add  />
                 </ProductAmountContainer>
                 <ProductPrice>£ {popularProducts[0].price}</ProductPrice>
               </PriceDetail>
@@ -245,7 +251,7 @@ const Cart = () => {
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>£ 200</SummaryItemPrice>
+              <SummaryItemPrice>£ 180</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Estimated Shipping</SummaryItemText>
@@ -254,7 +260,7 @@ const Cart = () => {
             <SummaryItem></SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>£ 200</SummaryItemPrice>
+              <SummaryItemPrice>£ 180</SummaryItemPrice>
             </SummaryItem>
             <Button>Checkout</Button>
             <SummaryItem>

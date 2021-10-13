@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { mobile } from "../responsive";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   height: 40px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   ${mobile({ heigh: "50px" })}
   
 `;
@@ -40,10 +41,10 @@ const SearchContainer = styled.div`
   ${mobile({ fontSize: "8px", marginRight: "25px" , alignItems: "flex-start", padding: 0})}
 `;
 
-const Search = styled.div`
-    border: none;
-    
-`;
+const UserOptions = styled.p`
+  margin-left: 15px;
+  font-weight: bolder;
+`
 
 const Input = styled.input`
   padding: 8px;
@@ -53,6 +54,8 @@ const Input = styled.input`
 `;
 
 const NavbarTwo = () => {
+  const user = useSelector((state) => state.user.currentUser);
+
   return (
     <Container>
       <Wrapper>
@@ -63,8 +66,8 @@ const NavbarTwo = () => {
         </Left>
         <Right>
           <SearchContainer>
-            <Input placeholder="Search" />
-            <Search />
+            { !user && <UserOptions>LOG IN</UserOptions>} 
+            { !user && <UserOptions>SIGN UP</UserOptions>} 
           </SearchContainer>
         </Right>
       </Wrapper>

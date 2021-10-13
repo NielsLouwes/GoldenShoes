@@ -12,9 +12,10 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function App() {
-  // const user = true
+  const user = useSelector((state) => state.user.currentUser);
 
   return (
     <Router>
@@ -33,12 +34,12 @@ export default function App() {
             <ProductPage />
           </Route>
           <Route exact path="/login">
-            <Login />
-            {/* {user ? <Redirect to="/" /> :  <Login /> } */}
+            {/* <Login /> */}
+            {user ? <Redirect to="/" /> :  <Login /> }
           </Route>
           <Route exact path="/register">
-            <Register />
-            {/* {user ? <Redirect to="/" /> :   <Register /> } */}
+            {/* <Register /> */}
+            {user ? <Redirect to="/" /> :   <Register /> }
           </Route>
           <Route exact path="/cart">
             <Cart />
