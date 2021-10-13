@@ -3,13 +3,10 @@ import styled from "styled-components";
 import {
   AccountCircleOutlined,
   FavoriteBorderOutlined,
-  Search,
-  ShoppingCartOutlined,
 } from "@mui/icons-material";
 import Badge from "@mui/material/Badge";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCart";
 import { mobile } from "../responsive";
-import { color } from "@mui/system";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -25,20 +22,6 @@ const Wrapper = styled.div`
   justify-content: space-between;
   ${mobile({ padding: "10px 0px" })}
 `;
-
-// const Genders = styled.span`
-//   font-size: 1rem;
-//   cursor: pointer;
-//   margin-right: 25px;
-//   ${mobile({ fontSize: "12px", marginRight: "5px" })}
-// `;
-
-// const Left = styled.div`
-//   color: white;
-//   display: flex;
-//   align-items: center;
-//   flex: 1;
-// `;
 
 const Center = styled.div`
   color: white;
@@ -63,14 +46,6 @@ const Right = styled.div`
   ${mobile({ flex: 2, marginRight: "20px" })}
 `;
 
-// const SearchContainer = styled.div`
-//   display: flex;
-//   align-items: center;
-//   margin-left: 25px;
-//   padding: 5px;
-//   margin-right: 25px;
-// `;
-
 const MenuItems = styled.span`
   font-size: 1rem;
   cursor: pointer;
@@ -82,12 +57,6 @@ const LinkStyle = {
   textDecoration: "none",
   color: "white",
 };
-
-// const Input = styled.input`
-//   padding: 5px;
-//   border: none;
-//   ${mobile({ width: "50px" })}
-// `;
 
 const Navbar = () => {
   const quantity = useSelector((state) => state.cart.quantity);

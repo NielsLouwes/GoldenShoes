@@ -1,10 +1,7 @@
 import styled from "styled-components";
 import FacebookOutlined from "@mui/icons-material/FacebookOutlined";
-import InstagramIcon from "@mui/icons-material/Instagram";
 import Instagram from "@mui/icons-material/Instagram";
-import TwitterIcon from "@mui/icons-material/Twitter";
 import Twitter from "@mui/icons-material/Twitter";
-import PinterestIcon from "@mui/icons-material/Pinterest";
 import Pinterest from "@mui/icons-material/Pinterest";
 import { mobile } from "../responsive";
 
@@ -26,9 +23,11 @@ const Description = styled.p`
   margin: 20px 0px;
   ${mobile({ margin: "none" })}
 `;
+
 const SocialContainer = styled.div`
   display: flex;
 `;
+
 const SocialIcon = styled.div`
   margin: 7px;
   width: 40px;
@@ -62,7 +61,7 @@ const Right = styled.div`
   flex: 1;
   padding-bottom: 20px;
   margin-left: 60px;
-  ${mobile({ padding: "none", marginLeft: "0px"})}
+  ${mobile({ padding: "none", marginLeft: "0px" })}
 `;
 
 const Footer = () => {
@@ -89,9 +88,9 @@ const Footer = () => {
       <Center>
         <Logo>Customer Service</Logo>
         <List>
-          <ListItem>Contact us</ListItem>
+          <ListItem>Returns Policy and FAQ</ListItem>
           <ListItem>Delivery details</ListItem>
-          <ListItem>Returns</ListItem>
+          <ListItem>Contact us</ListItem>
           <ListItem>Warranty and repairs</ListItem>
           <ListItem>Gift Cards</ListItem>
           <ListItem>Refunds</ListItem>

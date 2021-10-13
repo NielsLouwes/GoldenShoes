@@ -34,19 +34,15 @@ export default function App() {
             <ProductPage />
           </Route>
           <Route exact path="/login">
-            {/* <Login /> */}
-            {user ? <Redirect to="/" /> :  <Login /> }
+            {user ? <Redirect to="/" /> : <Login />}
           </Route>
           <Route exact path="/register">
-            {/* <Register /> */}
-            {user ? <Redirect to="/" /> :   <Register /> }
+            {user ? <Redirect to="/" /> : <Register />}
           </Route>
           <Route exact path="/cart">
             <Cart />
           </Route>
         </Switch>
-
-        {/* <Checkout /> */}
       </div>
     </Router>
   );

@@ -7,12 +7,13 @@ import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 import { useState, useEffect } from "react";
 import { Add, Remove } from "@mui/icons-material";
-import { mobile } from "../responsive";
+import { mobile, tablet } from "../responsive";
 import { useLocation } from "react-router";
 import { publicRequest } from "../axiosRequests";
 import { addProduct } from "../redux/cartRedux";
 import { useDispatch } from "react-redux";
 import { popularProducts } from "../data";
+import NavbarTwo from "../components/NavbarTwo";
 
 const Container = styled.div``;
 const Wrapper = styled.div`
@@ -129,7 +130,7 @@ const CartButton = styled.option`
 `;
 
 const ProductPage = () => {
-  const [value, setValue] = useState(4.5);
+  const [value, setValue] = useState(4);
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const [product, setProduct] = useState({});
@@ -161,6 +162,7 @@ const ProductPage = () => {
   return (
     <Container>
       <Navbar />
+      <NavbarTwo />
       <Benefits />
       <Wrapper>
         <ImageContainer>
@@ -198,12 +200,13 @@ const ProductPage = () => {
             <Filter>
               <FilterTitle>Size</FilterTitle>
               <FilterSize>
-                <FilterSizeOption>XS</FilterSizeOption>
-                <FilterSizeOption>S</FilterSizeOption>
-                <FilterSizeOption>M</FilterSizeOption>
-                <FilterSizeOption>L</FilterSizeOption>
-                <FilterSizeOption>XL</FilterSizeOption>
-                <FilterSizeOption>XXL</FilterSizeOption>
+                <FilterSizeOption>38</FilterSizeOption>
+                <FilterSizeOption>40</FilterSizeOption>
+                <FilterSizeOption>41</FilterSizeOption>
+                <FilterSizeOption>42</FilterSizeOption>
+                <FilterSizeOption>43</FilterSizeOption>
+                <FilterSizeOption>44</FilterSizeOption>
+                <FilterSizeOption>45</FilterSizeOption>
               </FilterSize>
             </Filter>
           </FilterContainer>

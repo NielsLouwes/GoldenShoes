@@ -7,14 +7,12 @@ import NikeShoesOne from "./images/NIkeShoesOne.png";
 import NikeShoesTwo from "./images/NikeShoesTwo.png";
 import WomensBoot from "./images/WomensBoot.png"
 
-
-
 export const categories = [
     {
       id: 1,
       img: "https://images.asos-media.com/products/asos-design-oxford-schoenen-van-lichtbruin-leer-met-teenstuk/22667836-1-tan?$n_320w$&wid=317&fit=constrain",
       title: "Smart Shoes",
-      category: "smart-shoes"
+      category: "smart"
     },
     {
       id: 2,

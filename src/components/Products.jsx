@@ -15,6 +15,8 @@ const Products = ({ category, filters, sort }) => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
+  //Plan was to finish place the products from data.js into the MongoDB backend and make axios call to it, but ran out of time.
+  
   useEffect(() => {
     const getProducts = async () => {
       try {
@@ -69,9 +71,4 @@ const Products = ({ category, filters, sort }) => {
 
 export default Products;
 
-//implement with backend if photos work
-// {
-//   category
-//     ? filteredProducts.map((item) => <Product item={item} key={item.id} />)
-//     : products.slice(0, 8).map((item) => <Product item={item} key={item.id} />);
-// }
+

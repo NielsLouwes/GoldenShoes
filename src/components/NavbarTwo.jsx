@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import { mobile } from "../responsive";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout } from "../redux/userRedux";
 
 const Container = styled.div`
   height: 40px;
   margin-bottom: 5px;
   ${mobile({ heigh: "50px" })}
-  
 `;
 
 const Wrapper = styled.div`
@@ -28,11 +30,13 @@ const Genders = styled.span`
   cursor: pointer;
   margin-right: 25px;
   font-weight: bolder;
+  font-size: 12px;
   ${mobile({ fontSize: "12px", marginRight: "5px", marginLeft: "10px"})}
 `;
+
 const Right = styled.div``;
 
-const SearchContainer = styled.div`
+const UserLoginContainer = styled.div`
   display: flex;
   align-items: center;
   margin-left: 25px;
@@ -44,17 +48,26 @@ const SearchContainer = styled.div`
 const UserOptions = styled.p`
   margin-left: 15px;
   font-weight: bolder;
+  cursor: pointer;
+  font-size: 12px;
 `
 
-const Input = styled.input`
-  padding: 8px;
-  border: none;
-  background-color: #d3d3d3;
-  ${mobile({ width: "100px" , padding: "5px" })}
-`;
+const LinkStyle = {
+  textDecoration: "none",
+  color: "black",
+  fontSize: "12px",
+  
+};
 
 const NavbarTwo = () => {
   const user = useSelector((state) => state.user.currentUser);
+  const dispatch = useDispatch();
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+
+    dispatch(logout());
+  }
 
   return (
     <Container>
@@ -65,10 +78,11 @@ const NavbarTwo = () => {
           <Genders>Youth</Genders>
         </Left>
         <Right>
-          <SearchContainer>
-            { !user && <UserOptions>LOG IN</UserOptions>} 
-            { !user && <UserOptions>SIGN UP</UserOptions>} 
-          </SearchContainer>
+          <UserLoginContainer >
+            { !user && <Link style={LinkStyle} to="/login"><UserOptions>Log in</UserOptions></Link>} 
+            { !user && <Link style={LinkStyle} to="/register"><UserOptions>Sign up</UserOptions></Link>}
+            { user && <UserOptions onClick={(e) => handleLogout(e)}> Log out</UserOptions>}
+          </UserLoginContainer>
         </Right>
       </Wrapper>
     </Container>

@@ -3,7 +3,6 @@ import { FavoriteBorderOutlined } from "@mui/icons-material";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
 
-
 const Info = styled.div`
   opacity: 0;
   width: 100%;
@@ -47,12 +46,6 @@ const Image = styled.img`
   z-index: 2;
 `;
 
-const BuyText = styled.p`
-  margin-right: 10px;
-  color: white;
-  font-weight: bolder;
-`;
-
 const Icon = styled.div`
   width: 40px;
   height: 40px;
@@ -79,7 +72,6 @@ const LinkStyle = {
 
 const Product = ({ item }) => {
 
-
   return (
     <Container>
       <Circle />
@@ -100,9 +92,4 @@ const Product = ({ item }) => {
 
 export default Product;
 
-//implement in INFO section below Image if backend working.
-{
-  /* <Link to={`/product/${item._id}`}>
-<SearchIcon />{" "}
-</Link> */
-}
+

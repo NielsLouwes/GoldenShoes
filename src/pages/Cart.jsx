@@ -1,19 +1,15 @@
 import { Add, Remove } from "@mui/icons-material";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
 import styled from "styled-components";
 import Benefits from "../components/Benefits";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
 import { mobile } from "../responsive";
-import WomensBoot from "../images/WomensBoot.png";
-import NikeShoesTwo from "../images/NikeShoesTwo.png";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { popularProducts } from "../data";
 import { useState } from "react";
-import { tablet } from "../responsive"
-
+import { tablet } from "../responsive";
+import NavbarTwo from "../components/NavbarTwo";
 
 const Container = styled.div``;
 
@@ -24,7 +20,7 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.h1`
-  font-weight: 300;
+  font-weight: bolder;
   text-align: center;
   margin-bottom: 50px;
 `;
@@ -71,7 +67,7 @@ const ProductDescription = styled.p`
 `;
 
 const ProductId = styled.span`
-  ${mobile({ marginBottom: "5px" })}    
+  ${mobile({ marginBottom: "5px" })}
 `;
 
 const ProductColor = styled.div`
@@ -80,7 +76,7 @@ const ProductColor = styled.div`
   border-radius: 50%;
   border: 1px solid grey;
   background-color: ${(props) => props.color};
-  ${mobile({ marginBottom: "5px" })}  
+  ${mobile({ marginBottom: "5px" })}
 `;
 
 const ProductSize = styled.span``;
@@ -123,9 +119,8 @@ const Summary = styled.div`
   border-radius: 10px;
   padding: 20px;
   height: 50vh;
-  ${tablet({ heigh: '65vh' })}
+  ${tablet({ heigh: "65vh" })}
 `;
-
 
 const SummaryTitle = styled.h1`
   font-weight: 200;
@@ -188,6 +183,7 @@ const Cart = () => {
   return (
     <Container>
       <Navbar />
+      <NavbarTwo />
       <Benefits />
       <Wrapper>
         <Title>YOUR BAG</Title>
@@ -212,9 +208,9 @@ const Cart = () => {
               </ProductDetail>
               <PriceDetail>
                 <ProductAmountContainer>
-                  <Remove  />
+                  <Remove />
                   <ProductAmount>{quantity}</ProductAmount>
-                  <Add  />
+                  <Add />
                 </ProductAmountContainer>
                 <ProductPrice>£ {popularProducts[0].price}</ProductPrice>
               </PriceDetail>
@@ -241,7 +237,7 @@ const Cart = () => {
                 <ProductAmountContainer>
                   <Remove onClick={() => handleQuantity("decrease")} />
                   <ProductAmount>{quantity}</ProductAmount>
-                  <Add  onClick={() => handleQuantity("increase")}/>
+                  <Add onClick={() => handleQuantity("increase")} />
                 </ProductAmountContainer>
                 <ProductPrice>£ {popularProducts[7].price}</ProductPrice>
               </PriceDetail>

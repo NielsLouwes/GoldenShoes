@@ -1,5 +1,4 @@
 import React from "react";
-import Banner from "../components/Banner";
 import Benefits from "../components/Benefits";
 import Categories from "../components/Categories";
 import Footer from "../components/Footer";

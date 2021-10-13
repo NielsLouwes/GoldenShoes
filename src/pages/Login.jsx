@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -11,18 +10,10 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
-import Register from "./Register";
 import { useState } from "react";
 import { login } from "../redux/apiAuthCall";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-
-const Container = styled.div``;
-
-const Error = styled.span`
-  color: red;
-  font-size: 12px;
-`;
 
 function Copyright(props) {
   return (
@@ -46,7 +37,7 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const {isFetching, error} = useSelector((state) => state.user)
+  const { isFetching, error } = useSelector((state) => state.user);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -127,12 +118,11 @@ const Login = () => {
               autoComplete="current-password"
               onChange={(e) => setPassword(e.target.value)}
             />
-            
+
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-            {error && <Error>Wrong username or password</Error>}
             <Button
               type="submit"
               fullWidth
