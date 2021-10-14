@@ -16,23 +16,30 @@ import { popularProducts } from "../data";
 import NavbarTwo from "../components/NavbarTwo";
 
 const Container = styled.div``;
+
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
   ${mobile({ padding: "10px", flexDirection: "column" })}
 `;
 const ImageContainer = styled.div`
-  flex: 1;
+  flex: 2;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 `;
 const Image = styled.img`
-  width: 100%;
-  height: 60vh;
+  width: 50%;
+  height: 35vh;
   object-fit: cover;
-  ${mobile({ height: "40vh" })}
+  padding: 10px;
+  ${mobile({ height: "25vh", padding: "5px" })}
 `;
 const InfoContainer = styled.div`
   flex: 1;
   padding: 0 50px;
+  margin-top: 12px;
   ${mobile({ padding: "10px" })}
 `;
 const Title = styled.h1``;
@@ -167,8 +174,10 @@ const ProductPage = () => {
       <Wrapper>
         <ImageContainer>
           <Image src="https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/7ed0855435194229a525aad6009a0497_9366/Superstar_Shoes_White_EG4958_01_standard.jpg" />
+          <Image src="https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/ff2e419f1eda4ebab23faad6009a3a9e_9366/Superstar_Shoes_White_EG4958_04_standard.jpg" />
+          <Image src="https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/3d0933f855c445fea224aad600bac8b7_9366/Superstar_Shoes_White_EG4958_09_standard.jpg" />
+          <Image src="https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/f7a9b761e4414c2985b2ab1400f8c9e1_9366/Superstar_Shoes_White_EG4958_HM1.jpg" />
         </ImageContainer>
-
         <InfoContainer>
           <Title>{popularProducts[0].name}</Title>
           <Category>{popularProducts[0].category}</Category>
