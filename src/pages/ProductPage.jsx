@@ -24,7 +24,7 @@ const Wrapper = styled.div`
 `;
 const ImageContainer = styled.div`
   flex: 2;
-  padding: 20px;
+  padding: 15px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
