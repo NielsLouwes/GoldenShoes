@@ -1,3 +1,5 @@
+Golden Shoe is a fictional e-commerce application. I made this as part of a job interview, where i had to deliver a responsive web application that solved the problems of Golden Shoe as a company.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
